@@ -1,0 +1,65 @@
+Day-2 Document Object Model And Components
+Dom represents the page content as html. When the web page is loded, the browser creates dom of the page. Example - document.body - page body as js , document.body.style.background = "blue" - changes page background to blue
+
+JavaScript provides several methods to access and manipulate DOM elements:
+
+getElementById(): Selects an element by its ID.
+
+getElementsByName(): Selects elements by their name attribute.
+
+getElementsByTagName(): Selects elements by their tag name.
+
+getElementsByClassName(): Selects elements by their class name.
+
+querySelector(): Selects elements using CSS selectors
+
+Other DOM properties
+ 
+Console.log - To print output
+tagName - only exists for element nodes
+nodeName - defined for any node(text, comment etc)
+
+Attribute methords
+1.element.hasAttribute(name) - Methord to check for existence of an attribute
+2.element.getAttribute(name) - to get the value of an attribute
+3.element.sasAttribute(name) - to set the value
+4.element.removeasAttribute(name) - to remove the attribute
+5.element.attribute(name) - to get the collection of all attributes
+
+Components - There are two type of components class based and function based.
+
+class component - A class component must include the extends React.Component statement. It requires a render methord, this methord return html
+example:
+class abhi extends React.Component {
+  render() {
+    return <h2>Hi, I am abhi!</h2>;
+  }
+}  
+
+Function component - Function component behaves same as class component, but it is easier and can be written using much less code and widely used by the codders.
+example:
+function Car() {
+  return <h2>Hi, I am abhi!</h2>;
+}
+
+rendring a component using function component - if your application have any component that is not recognised by html you can use this component in your application, use similar syntax as normal HTML: <xyz />
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<xyz />);
+
+Props - Props are arguments passed into React components.
+example:-
+function football(props) {
+  return <h2>I am a { props.player }!</h2>;
+}
+
+function bestPlyer() {
+  return (
+    <>
+      <h1>Who is the best player in the word?</h1>
+      <football player="Messi" />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<bestPlayer />);
