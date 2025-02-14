@@ -1,0 +1,70 @@
+Day-9 R&D on API Integration
+
+API Integration in Node.js
+API integration in Node.js allows your application to communicate with external services or other applications. You can use Express.js to create APIs and Axios or Fetch API to consume external APIs.
+
+Calling an external API in Node.js(using Axios)
+dependencies
+npm init -y
+npm install express axios
+
+
+const express = require('express');
+const axios = require('axios');
+
+
+backend code in server.js file
+const app = express();
+const PORT = 5000;
+
+
+app.get('/users', async (req, res) => {
+    try {
+        const response = await axios.get('https://dog.ceo/api/breeds/image/random');//This api will generate random dog image
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch data' });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(Server running on http://localhost:${PORT});
+});
+ 
+
+http://localhost:5000/users //port
+Backend output
+{
+  "message": "https://images.dog.ceo/breeds/spitz-japanese/tofu.jpg",
+  "status": "success"
+}
+
+Frontend code inside index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+</head>
+<body>
+    <h2>Random Image</h2>
+    <button onclick="getRandomImage()">Get New Image</button>
+    <br><br>
+    <img id="randomImage" src="" alt="Random Image" width="400px" height="300px">
+
+    <script>
+        async function getRandomImage() {
+            try {
+                const response = await axios.get("https://dog.ceo/api/breeds/image/random");
+                document.getElementById("randomImage").src = response.data.message; 
+            } catch (error) {
+                console.error("Error fetching image:", error);
+            }
+        }
+        getRandomImage(); 
+    </script>
+</body>
+</html>
+Output - Generating random dog images
