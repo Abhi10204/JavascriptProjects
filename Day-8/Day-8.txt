@@ -1,0 +1,28 @@
+Day-8 Node.js: Basic Structure & Concepts
+
+Node.js is an open-source, server-side runtime environment built on Chrome's V8 JavaScript engine. It allows running JavaScript outside the browser and with the help of node.js you can write backend code in Javascript.
+
+To create simple node js application first we need to install node js and then initialized project by running command
+npm init -y
+It creates package.json file
+
+then install express framework
+npm i express
+
+Example of simple node.js server using express
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Welcome to my Node.js App');
+});
+
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});
+
+To run this code 
+node index.js(file name)
+or
+npm i nodemon
+modemon index.js
