@@ -1,0 +1,116 @@
+Day-7 Self Study   
+
+React fragements
+. In React.js, a component can't return multiple elements without a wrapper div.
+. You can do this to imitate it: Using an array of elements with keys
+. return [<p> Ram </p>,<stong>20</strong>];
+. To fix this react 16 introduced Fragments, which allow components to return multiple elements without adding extra nodes to the DOM.
+. example-:
+import {fragments} from "react";
+return <fragments>//</fragments>
+. Alternatively, you can also use it's shorthand syntax:
+. <></>
+
+useReducer()
+syntax:- const[state,dispatch] = useReducer,reducer,initialState);
+.It returns an array containing the current state and a dispatch function.
+
+.Dispatch function is used to sned actions to the reducer, which in turn upgrade the state based on the actions type and any associated data (payload).
+
+.Reducer Function: A function that takes the current state and an action as an arguments, and returns a new state.
+
+Example :-
+import React, { useReducer } from 'react';
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    case 'reset':
+      return { count: 0 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+Controlled Components
+Controlled components are those in React where form data is handled by React component state.
+example:
+import React, { useState } from 'react';
+
+function ControlledForm() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert('Submitted Value: ' + inputValue);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Controlled Input:
+        <input 
+          type="text" 
+          value={inputValue}  // value is controlled by state
+          onChange={handleChange}  // updates state on change
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default ControlledForm;
+
+Uncontrolled Components
+Uncontrolled components in React are those where form data is handled by the DOM itself.
+example:
+import React, { useRef } from 'react';
+
+function NonControlledForm() {
+  const inputRef = useRef();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert('Submitted Value: ' + inputRef.current.value); // Accessing the value via ref
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Non-Controlled Input:
+        <input 
+          type="text"
+          ref={inputRef}  // Reference to the input field
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default NonControlledForm;
