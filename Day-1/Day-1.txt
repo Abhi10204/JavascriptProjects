@@ -1,0 +1,54 @@
+Day 1 - REST API and CRUD Operation 
+Rest api is the way to send and receive data between a client (like web browser) and a Server(build with node js)
+There are 4 Methods to do so -
+. GET - To get data
+. POST - To create data
+. PATCH - To Edit Data
+. DELETE - To delete data
+
+Syntax using express framework
+
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.get('/', function(req, res){
+	res.send('Get Request Called')
+	}
+
+app.post('/',
+    (req, res) => {
+        res.send("POST Request Called")
+    })
+
+app.patch('/',
+    (req, res) => {
+        res.send("Patch Request Called")
+    })
+
+app.delete('/',
+    (req, res) => {
+        res.send("Delete Request Called")
+    })
+
+app.listen(PORT,
+    function (err) {
+        if (err) console.log(err);
+        console.log("Server listening on PORT", PORT);
+    }); 
+
+CURD-  CRUD operations are essential for interacting with databases and managing data in any application.
+Create - In MongoDB the HTTP method used for creating data is POST.
+Example in MongoDB:
+db.users.insert({ name: 'abhijeet', email: 'abhi@gmail.com' });
+
+Read - In MongoDB the HTTP method used for reading data is GET.
+Example:
+db.users.find({ email: 'abhi@gmail.com' });
+
+Update - In MongoDB the HTTP method used for reading data is Put or Patch.
+db.users.findByIdAndUpdate({ email: 'abhi@gmail.com' }, { $set: { name: 'abhijeet singh bais' } });
+
+Delete - In MongoDB the HTTP method used for reading data Delete.
+Example:
+db.users.findByIdAndDelete({ email: 'abhi@gmail.com' });
