@@ -1,0 +1,56 @@
+Day-5 (Self Study)
+JS Logic
+ForEach- The forEach method of Array instances executes a provided function once for each array element.
+Example-:
+//Grouping  an array of objects by specific property(e.g., grouping users by role).
+const users = [
+    { name:"john", age: "20", role:"admin"},
+    {name: "anny", age : "24", role:"user"},
+    {name: "kia", age: "21", role:"user"},
+];
+
+let obj = {};
+users.forEach ((user)=>{
+    if (obj [user.role]){
+        obj [user.role].push(user);
+    }
+    else{
+        obj [user.role] = [];
+        obj [user.role].push(user);
+    }
+});
+console.log(obj);
+
+Map - The Map object holds key-value pairs and remembers the original insertion order of the keys.
+const names = ["abc", "sgfj", "sjdfbjs", "fbdsf"];
+
+let newArr = names.map((value) => {
+   return 1;
+   
+});
+
+console.log(newArr)
+
+Filter - The filter method creates a new array containing elements that satisfy a specified condition. This method skips empty elements and does not change the original array.
+const names = ["abc", "sgfj", "sjdfbjs", "fbdsf"];
+
+let newArr = names.filter ((value)=>{
+    return value.startsWith("s")
+})
+
+console.log(newArr)
+
+Spread and Rest - Spread operator is used to make the copy of an array and The rest parameter syntax allows a function to accept an indefinite number of arguments as an array.
+example of spread:-
+const names = ["abc", "sgfj", "sjdfbjs", "fbdsf"];
+
+let copyNames = [...names];
+copyNames.pop() // It removes last element from copy array but names array remains the same
+console.log(copyNames)
+
+rest example-:
+const abcd = (a, b, c, ...rest) => {
+    console.log(a, b, c, rest);
+};
+
+abcd(1, 2, 3, 4, 5, 6);
