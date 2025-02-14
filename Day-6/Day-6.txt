@@ -1,0 +1,82 @@
+Day 6 Basics of JSX and dom architecture
+JSX  is a syntax extension for JavaScript, primarily used with React to describe what the UI should look like.
+
+const name = "Abhijeet";
+const greeting = <h1>Hello, {name}!</h1>;
+The value of name will be rendered within the <h1> element.
+
+JSX and Components: JSX is often used to define React components. A React component can return JSX, which React will convert into a virtual DOM, later updated to the real DOM.
+
+Example of a simple component in JSX:
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+JSX Attributes:
+
+Use camelCase for attributes in JSX (e.g., className instead of class).
+JSX also supports style as an object:
+jsx
+Copy
+Edit
+const divStyle = {
+  color: 'blue',
+  backgroundColor: 'yellow'
+};
+const element = <div style={divStyle}>Styled div</div>;
+JSX and Children: JSX can contain other elements, which is common for nesting components or elements within each other:
+
+const element = (
+  <div>
+    <h1>Title</h1>
+    <p>Some text</p>
+  </div>
+);
+Basics of DOM Architecture
+The DOM (Document Object Model) is a programming interface for web documents. It represents the page so that programs can manipulate the structure, style, and content of a webpage. The DOM is a tree-like structure where each node represents part of the page.
+
+Key Concepts in DOM Architecture:
+DOM Tree Structure: The DOM represents the document as a tree of nodes. The root node is the document, and it branches out into various elements, such as <html>, <body>, and other HTML tags.
+
+Example of a simple HTML DOM structure:
+
+<html>
+  <body>
+    <div id="main">
+      <h1>Welcome</h1>
+      <p>Some content here</p>
+    </div>
+  </body>
+</html>
+In the DOM, this would look like:
+
+
+DOM Nodes: There are different types of nodes in the DOM, such as:
+
+Element nodes: Represent HTML elements like <div>, <p>, etc.
+Text nodes: Represent the text content inside elements.
+Attribute nodes: Represent attributes of elements (e.g., id, class).
+Manipulating the DOM: JavaScript allows interaction with the DOM. You can access, modify, and delete elements from the DOM using various methods, like:
+
+getElementById(), getElementsByClassName(), or querySelector().
+createElement(), appendChild(), and removeChild() to create and manipulate elements dynamically.
+Example of changing content in the DOM:
+
+
+document.getElementById('myElement').innerText = 'New Content';
+Event Handling: JavaScript allows you to interact with the DOM by handling events like clicks, keystrokes, etc.
+
+
+document.getElementById('myButton').addEventListener('click', function() {
+  alert('Button clicked!');
+});
+Virtual DOM (in context of React): In React, the Virtual DOM is a lightweight copy of the actual DOM. React maintains the Virtual DOM to efficiently update the UI. It minimizes changes to the real DOM by updating only the parts that have changed, leading to better performance.
+
+Relationship between JSX and DOM:
+JSX gets transformed into JavaScript objects (React elements), which represent the virtual DOM.
+React then compares the virtual DOM to the real DOM and only updates the parts of the UI that have changed (a process called reconciliation).
+
+In summary:
+
+JSX is a syntax extension for defining UI in React, while DOM is the underlying structure that represents the web page.
+JSX allows JavaScript code to be seamlessly embedded in the UI structure.
+React manages changes to the DOM efficiently by using a Virtual DOM to minimize updates to the real DOM.
