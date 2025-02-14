@@ -1,4 +1,6 @@
 Day-2 Document Object Model And Components
+
+
 Dom represents the page content as html. When the web page is loded, the browser creates dom of the page. Example - document.body - page body as js , document.body.style.background = "blue" - changes page background to blue
 
 JavaScript provides several methods to access and manipulate DOM elements:
