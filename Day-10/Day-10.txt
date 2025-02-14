@@ -1,0 +1,20 @@
+Day-10 What is Postman and how its works
+
+Postman is an API testing tool that allows us to send requests to APIs, inspect response, and automate testing.
+
+Today i perform get and post methods on postman
+Steps -:
+1.Provided the path http://localhost:5001/api/auth/register and selected post
+2.In the header section selected key Content-Type and value application
+3. In the body section selected raw json and put this dummy data
+{ 
+    "name": "john doe",
+  "email": "johndoe@example.com",
+  "password": "SecurePass123",
+    "role": "admin"
+  }
+postman otuput :{
+    "message": "User registered successfully"
+}
+
+And also checked my data got posted on MongoDb atlas.
